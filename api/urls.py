@@ -20,13 +20,14 @@ from django.urls import path, include
 from db.views import *
 from rest_framework import routers
 
-router = routers.DefaultRouter()
-router.register(r'person', PersonViewSet)
+# router = routers.DefaultRouter()
+# router.register(r'person', PersonViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/', include('db.urls')),
-    path('api/', include(router.urls)),
+    path('api/', include('db.urls')),
+    path('api/auth/', include('rest_framework.urls')),
+    # path('api/', include(router.urls)),
 
 ]

@@ -1,25 +1,27 @@
 
-from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework import generics, viewsets
 from rest_framework.views import APIView
 from db.serializers import PersonSerializer
 from .models import Person
+from rest_framework.permissions import *
 # Create your views here.
 
 
-class PersonViewSet(viewsets.ModelViewSet):
-    queryset = Person.objects.all()
-    serializer_class = PersonSerializer
-
-# # class PersonListView(generics.ListCreateAPIView):
-# #     queryset = Person.objects.all()
-# #     serializer_class = PersonSerializer
-
-
-# class PersonAPIDetail(generics.RetrieveUpdateDestroyAPIView):
+# class PersonViewSet(viewsets.ModelViewSet):
 #     queryset = Person.objects.all()
 #     serializer_class = PersonSerializer
+
+class PersonListView(generics.ListCreateAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+
+class PersonAPIDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 
