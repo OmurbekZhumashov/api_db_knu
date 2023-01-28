@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import generics, viewsets
 from rest_framework.views import APIView
 from db.serializers import PersonSerializer
-from .models import Person
+from .models import Glossary
 from rest_framework.permissions import *
 # Create your views here.
 
@@ -12,16 +12,16 @@ from rest_framework.permissions import *
 #     queryset = Person.objects.all()
 #     serializer_class = PersonSerializer
 
-class PersonListView(generics.ListCreateAPIView):
-    queryset = Person.objects.all()
+class GlossaryListView(generics.ListCreateAPIView):
+    queryset = Glossary.objects.all()
     serializer_class = PersonSerializer
-    permission_classes = (IsAuthenticated,)
 
 
-class PersonAPIDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Person.objects.all()
+
+class GlossaryAPIDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Glossary.objects.all()
     serializer_class = PersonSerializer
-    permission_classes = (IsAuthenticated,)
+
 
 
 

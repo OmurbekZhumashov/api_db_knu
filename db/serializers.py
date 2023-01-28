@@ -2,11 +2,11 @@
 from dataclasses import fields
 from rest_framework import serializers
 
-from db.models import Person
+from db.models import Glossary
 
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Person
+        model = Glossary
         fields = "__all__"
 
 
